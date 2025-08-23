@@ -18,6 +18,6 @@ export const theMenu = ({ link, faq }: { link: string; faq: boolean }) =>
     [Markup.button.callback('FAQ', 'faq', !faq)],
     [
       Markup.button.callback('Настройки', `settings`),
-      Markup.button.url('Автор', 'https://danyatochka.ru'),
+      /*Markup.button.url('Автор', 'https://danyatochka.ru'),*/
     ],
   ]);
