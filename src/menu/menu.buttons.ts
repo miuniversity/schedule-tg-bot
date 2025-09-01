@@ -15,9 +15,10 @@ export const theMenu = ({ link, faq }: { link: string; faq: boolean }) =>
         `\n\nЯ пользуюсь ботом с расписанием занятий ММУ и хочу поделиться им с вами! Переходите по ссылке ниже и вы сразу сможете получать расписание нашей группы:\n${link}`,
       ),
     ],
-    [Markup.button.callback('FAQ', 'faq', !faq)],
+    // [Markup.button.callback('FAQ', 'faq', !faq)],
     [
       Markup.button.callback('Настройки', `settings`),
+      Markup.button.callback('FAQ', 'faq', !faq),
       /*Markup.button.url('Автор', 'https://danyatochka.ru'),*/
     ],
   ]);
