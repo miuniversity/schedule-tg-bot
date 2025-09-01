@@ -120,32 +120,32 @@ export class ScheduleService {
     return lessons
       .map((cur, index, arr) =>
         index > 0 && arr[index - 1].beginLesson === cur.beginLesson
-          ? `${hide_buildings ? '' : this.getShortBuilding(cur.building)}${cur.auditorium} - ${cur.lecturer}`
+          ? `${cur.auditorium}${this.getShortBuilding(cur.building, hide_buildings || cur.auditorium.includes(cur.building))} - ${cur.lecturer}`
           : `\n${cur.lessonNumberStart} | ${cur.beginLesson} - ${
               cur.endLesson
             }\n<b>${cur.discipline}</b> (${cur.kindOfWork.substring(
               0,
               3,
-            )}.)\n${hide_buildings ? '' : this.getShortBuilding(cur.building)}${cur.auditorium} - ${cur.lecturer}`,
+            )}.)\n${cur.auditorium}${this.getShortBuilding(cur.building, hide_buildings || cur.auditorium.includes(cur.building))} - ${cur.lecturer}`,
       )
       .join('\n');
   }
 
-  private getShortBuilding(b: string) {
-    return `${b
+  private getShortBuilding(b: string, hide_buildings = false) {
+    return hide_buildings ? '' : `(${b
       .split(' ')
       .map((i) => i[0].toUpperCase())
-      .join('')} | `;
+      .join('')})`;
   }
 
   private getFormattedDays(lessons: LessonDto[], hide_buildings?: boolean) {
     return lessons
       .map((cur, index, arr) =>
         index > 0 && arr[index - 1].beginLesson === cur.beginLesson
-          ? `<i>, ${hide_buildings ? '' : this.getShortBuilding(cur.building)}${cur.auditorium}</i>`
+          ? `<i>, ${cur.auditorium}${this.getShortBuilding(cur.building, hide_buildings || cur.auditorium.includes(cur.building))}</i>`
           : `\n${cur.lessonNumberStart} | <b>${
               cur.discipline
-            }</b> (${cur.kindOfWork.substring(0, 3)}.) - <i>${hide_buildings ? '' : this.getShortBuilding(cur.building)}${cur.auditorium}</i>`,
+            }</b> (${cur.kindOfWork.substring(0, 3)}.) - <i>${cur.auditorium}${this.getShortBuilding(cur.building, hide_buildings || cur.auditorium.includes(cur.building))}</i>`,
       )
       .join('');
   }
