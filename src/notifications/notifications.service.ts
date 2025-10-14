@@ -3,7 +3,7 @@ import { UsersService } from '../users/users.service';
 import { InjectBot } from 'nestjs-telegraf';
 import { Telegraf } from 'telegraf';
 import { CanceledError } from 'axios';
-import * as telegramifyMarkdown from 'telegramify-markdown';
+import telegramifyMarkdown from 'telegramify-markdown';
 import { WebhookService } from '../webhook/webhook.service';
 import { HttpService } from '@nestjs/axios';
 import { AppEvent } from '../webhook/entities/webhook.entity';
@@ -109,7 +109,7 @@ export class NotificationsService {
 
     const rejected: Rejected[] = [];
 
-    const preparedText = telegramifyMarkdown(text);
+    const preparedText = telegramifyMarkdown(text, 'keep');
 
     this.sendWH(AppEvent.NOTIFICATION_STARTED, {
       args: this.args,
@@ -122,6 +122,7 @@ export class NotificationsService {
     console.time(`Time has passed for ${list.length}`);
     const sendingResult = await this.sendMessageByList(list, preparedText, {
       doLinkPreview: options.doLinkPreview ?? true,
+      signal: this.abortController.signal,
     });
 
     rejected.push(...sendingResult.rejected);
@@ -162,6 +163,7 @@ export class NotificationsService {
             {
               doLinkPreview: options.doLinkPreview ?? true,
               isRetry: true,
+              signal: this.abortController.signal,
             },
           );
           rejected.push(...retryResult.rejected);
