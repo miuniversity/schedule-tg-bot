@@ -3,7 +3,9 @@ import { UsersService } from '../users/users.service';
 import { InjectBot } from 'nestjs-telegraf';
 import { Telegraf } from 'telegraf';
 import { CanceledError } from 'axios';
-import telegramifyMarkdown from 'telegramify-markdown';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import * as telegramifyMarkdown from 'telegramify-markdown';
 import { WebhookService } from '../webhook/webhook.service';
 import { HttpService } from '@nestjs/axios';
 import { AppEvent } from '../webhook/entities/webhook.entity';
@@ -109,7 +111,7 @@ export class NotificationsService {
 
     const rejected: Rejected[] = [];
 
-    const preparedText = telegramifyMarkdown(text);
+    const preparedText = telegramifyMarkdown(text, 'keep');
 
     this.sendWH(AppEvent.NOTIFICATION_STARTED, {
       args: this.args,

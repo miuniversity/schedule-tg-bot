@@ -132,10 +132,12 @@ export class ScheduleService {
   }
 
   private getShortBuilding(b: string, hide_buildings = false) {
-    return hide_buildings ? '' : `(${b
-      .split(' ')
-      .map((i) => i[0].toUpperCase())
-      .join('')})`;
+    return hide_buildings
+      ? ''
+      : `(${b
+          .split(' ')
+          .map((i) => i[0].toUpperCase())
+          .join('')})`;
   }
 
   private getFormattedDays(lessons: LessonDto[], hide_buildings?: boolean) {
