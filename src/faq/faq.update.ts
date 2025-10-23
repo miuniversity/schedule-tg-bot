@@ -6,7 +6,7 @@ import { Context } from 'telegraf';
 import { MESSAGES } from '../app.constants';
 import { editMessage } from '../utils/editMessage';
 import { faqButtons } from './faq.buttons';
-import telegramifyMarkdown from 'telegramify-markdown';
+import { convert } from 'telegram-markdown-v2';
 
 @Update()
 export class FaqUpdate {
@@ -32,7 +32,7 @@ export class FaqUpdate {
       await editMessage(
         ctx,
         faqData?.value
-          ? telegramifyMarkdown(faqData.value, 'keep')
+          ? convert(faqData.value)
           : MESSAGES[user?.language || 'ru'].FAQ_TEXT_NOT_FOUND,
         {
           reply_markup: faqButtons.reply_markup,
@@ -44,7 +44,7 @@ export class FaqUpdate {
       await ctx
         .reply(
           faqData?.value
-            ? telegramifyMarkdown(faqData.value, 'keep')
+            ? convert(faqData.value)
             : MESSAGES[user?.language || 'ru'].FAQ_TEXT_NOT_FOUND,
           {
             reply_markup: faqButtons.reply_markup,
