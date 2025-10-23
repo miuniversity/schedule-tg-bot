@@ -68,9 +68,9 @@ importers:
       telegraf-session-local:
         specifier: ^2.1.1
         version: 2.1.1(debug@4.4.3)(telegraf@4.16.3)
-      telegram-markdown-v2:
-        specifier: ^0.0.4
-        version: 0.0.4
+      telegramify-markdown-es:
+        specifier: ^1.0.2
+        version: 1.0.2
       typeorm:
         specifier: ^0.3.27
         version: 0.3.27(pg@8.16.3)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@24.7.2)(typescript@5.9.3))
@@ -2241,9 +2241,6 @@ packages:
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
 
-  remark@15.0.1:
-    resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
-
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -2473,9 +2470,8 @@ packages:
     engines: {node: ^12.20.0 || >=14.13.1}
     hasBin: true
 
-  telegram-markdown-v2@0.0.4:
-    resolution: {integrity: sha512-AUDmxX1eHk+u5qTWtCCuvznF3y/1TlXcGnJDzF8WA3sqi1gPaNbHmWRLLYyra04I5ALu1A4wPLi8hed5AHpigw==}
-    engines: {bun: '>=1.2.20', node: '>=18.0.0'}
+  telegramify-markdown-es@1.0.2:
+    resolution: {integrity: sha512-KlGKRAV0RwH0izzMr6gQamMWyFQ8YCi279fQm40tz4Sgw8KToh4WcBPsG33lcN4WaAQ+EmbTNu7uhY6IkVe1Vw==}
 
   terser-webpack-plugin@5.3.14:
     resolution: {integrity: sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==}
@@ -5159,15 +5155,6 @@ snapshots:
       mdast-util-to-markdown: 2.1.2
       unified: 11.0.5
 
-  remark@15.0.1:
-    dependencies:
-      '@types/mdast': 4.0.4
-      remark-parse: 11.0.0
-      remark-stringify: 11.0.0
-      unified: 11.0.5
-    transitivePeerDependencies:
-      - supports-color
-
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
@@ -5431,14 +5418,10 @@ snapshots:
       - encoding
       - supports-color
 
-  telegram-markdown-v2@0.0.4:
+  telegramify-markdown-es@1.0.2:
     dependencies:
-      '@types/mdast': 4.0.4
       mdast-util-gfm-table: 2.0.0
-      mdast-util-phrasing: 4.1.0
       mdast-util-to-markdown: 2.1.2
-      mdast-util-to-string: 4.0.0
-      remark: 15.0.1
       remark-gfm: 4.0.1
       remark-parse: 11.0.0
       remark-remove-comments: 1.1.1
